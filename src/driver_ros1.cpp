@@ -201,11 +201,11 @@ static MetavisionWrapper::HardwarePinConfig get_hardware_pin_config(
   nn.erase(std::remove(nn.begin(), nn.end(), '/'), nn.end());
   std::string path = nn + "/ros__parameters/prophesee_pin_config";
   nh.getParam(path, pin_config);
-  if (pin_config.getType() != XmlRpc::XmlRpcValue::TypeStruct) {
-    ROS_ERROR_STREAM("got invalid config, no trigger parameter with name " << path);
-    ROS_ERROR_STREAM("node name " << nn << " must match pin config yaml file!");
-    throw std::runtime_error("invalid hardware pin config!");
-  }
+//  if (pin_config.getType() != XmlRpc::XmlRpcValue::TypeStruct) {
+//    ROS_ERROR_STREAM("got invalid config, no trigger parameter with name " << path);
+//    ROS_ERROR_STREAM("node name " << nn << " must match pin config yaml file!");
+//    throw std::runtime_error("invalid hardware pin config!");
+//  }
   for (const auto & pin_map : pin_config) {
     config.emplace(pin_map.first, std::map<std::string, int>{});
     for (auto & pin_entry : pin_map.second) {
